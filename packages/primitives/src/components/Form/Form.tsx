@@ -11,9 +11,7 @@ import type { ContextValue, DOMProps } from '../../utils';
 import { useContextProps } from '../../utils';
 
 export interface FormProps
-  extends SharedFormProps,
-    DOMProps,
-    GlobalDOMAttributes<HTMLFormElement> {
+  extends SharedFormProps, DOMProps, GlobalDOMAttributes<HTMLFormElement> {
   /**
    * Whether to use native HTML form validation to prevent form submission
    * when a field value is missing or invalid, or mark fields as required

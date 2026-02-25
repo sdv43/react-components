@@ -10,8 +10,7 @@ import type { ListState } from '@react-stately/list';
 import { useListState } from '@react-stately/list';
 
 export interface MultiSelectListProps<T>
-  extends CollectionBase<T>,
-    MultipleSelection {}
+  extends CollectionBase<T>, MultipleSelection {}
 
 export interface MultiSelectListState<T> extends ListState<T> {
   /** The keys for the currently selected items. */

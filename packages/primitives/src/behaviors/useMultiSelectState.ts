@@ -20,7 +20,8 @@ import type { MultiSelectListState } from './useMultiSelectListState';
 import { useMultiSelectListState } from './useMultiSelectListState';
 
 export interface MultiSelectProps<T>
-  extends CollectionBase<T>,
+  extends
+    CollectionBase<T>,
     AsyncLoadable,
     Omit<InputBase, 'isReadOnly'>,
     Validation,
@@ -37,9 +38,7 @@ export interface MultiSelectProps<T>
 }
 
 export interface MultiSelectState<T>
-  extends MultiSelectListState<T>,
-    MenuTriggerState,
-    FormValidationState {
+  extends MultiSelectListState<T>, MenuTriggerState, FormValidationState {
   /** Whether the select is currently focused. */
   isFocused: boolean;
 
