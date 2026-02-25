@@ -1,9 +1,11 @@
 import { createContext } from 'react';
 
-import type { ContextValue } from '@koobiq/react-primitives';
-import type { DisclosureAria } from '@react-aria/disclosure';
+import type { ContextValue, AriaButtonProps } from '@koobiq/react-primitives';
+
+type AccordionSummaryContextValue = ContextValue<
+  AriaButtonProps<'button'>,
+  HTMLButtonElement
+>;
 
 export const AccordionSummaryContext =
-  createContext<ContextValue<DisclosureAria['buttonProps'], HTMLButtonElement>>(
-    null
-  );
+  createContext<AccordionSummaryContextValue>(null);
