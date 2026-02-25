@@ -33,16 +33,16 @@ Dynamic collections, as shown below, can be used when the options come from an e
 data source such as an API call, or update over time.
 
 As seen below, an iterable list of options is passed to the `Select` using the `items` prop.
-Each item accepts an `key` prop, which is passed to the `onSelectionChange` handler to identify
-the selected item. Alternatively, if the item objects contain an key property, as shown
-in the example below, then this is used automatically and an `key` prop is not required.
+Each item accepts an `id` prop, which is passed to the `onChange` handler to identify
+the selected item. Alternatively, if the item objects contain an id property, as shown
+in the example below, then this is used automatically and an `id` prop is not required.
 
 <Story of={Stories.Content} />
 
 ## Single Selection
 
-Setting a selected option can be done by using the `defaultSelectedKey` or `selectedKey` prop.
-The selected key corresponds to the `key` prop of an item.
+Setting a selected option can be done by using the `defaultValue` or `value` prop.
+The selected id corresponds to the `id` prop of an item.
 
 <Story of={Stories.SingleSelection} />
 
@@ -58,7 +58,7 @@ In `selectionMode="multiple"`, selected values are displayed as tags by default.
 
 To control how tags are displayed, use the `selectedTagsOverflow` prop. It supports the following values:
 
-- `responsive` (default) — tags collapse into a summary (e.g., "3 more") to fit the available width without increasing the component block size.
+- `responsive` (default) — tags collapse into a summary (e.g., "+3") to fit the available width without increasing the component block size.
 - `multiline` — tags wrap to multiple lines, increasing the component height as needed.
 
 <Story of={Stories.SelectedTagsOverflow} />
@@ -78,7 +78,7 @@ When the select component is disabled, it cannot be interacted with.
 ## Disabled options
 
 Select supports marking items as disabled using the `disabledKeys` prop.
-Each key in this list corresponds with the `key` prop passed to the `Select.Item` component.
+Each key in this list corresponds with the `id` prop passed to the `Select.Item` component.
 
 <Story of={Stories.DisabledOptions} />
 
@@ -140,7 +140,8 @@ Select isn't opened by default. The `defaultOpen` prop can be used to set the de
 
 ### Controlled open
 
-The `isOpen` prop can be used to make the opened state controlled. The `onOpenChange` event is fired when the select's open state changes.
+The `isOpen` prop can be used to make the opened state controlled.
+The `onOpenChange` event is fired when the select's open state changes.
 
 <Story of={Stories.Open} />
 
