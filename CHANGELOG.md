@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://github.com/koobiq/react-components/compare/0.26.0...0.27.0) (2026-02-25)
+
+
+### 🚀 Features
+
+* update deps ([f9b1bfb](https://github.com/koobiq/react-components/commit/f9b1bfb1ef62a9e70cafbd4a2510917c45acaae9))
+
 ## [0.26.0](https://github.com/koobiq/react-components/compare/0.25.0...0.26.0) (2026-02-20)
 
 
