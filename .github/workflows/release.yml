@@ -26,7 +26,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version-file: .nvmrc
 
       - name: Install PNPM
         uses: pnpm/action-setup@v4
@@ -38,6 +38,12 @@ jobs:
 
       - name: Build Packages
         run: pnpm run build
+
+      - name: Configure NPM Auth
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ~/.npmrc
+
+      - name: Publish Packages to NPM
+        run: pnpm run release:publish --no-git-checks
 
       - name: Parse Changelog
         id: changelog
@@ -55,8 +61,13 @@ jobs:
           body: |
             ${{ steps.changelog.outputs.latestBody }}
 
-      - name: Configure NPM Auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ~/.npmrc
+      - name: Notify Mattermost
+        uses: mattermost/action-mattermost-notify@2.0.0
+        with:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MM_WEBHOOK_URL }}
+          MATTERMOST_CHANNEL: ${{ secrets.MM_CHANNEL_NAME }}
+          MATTERMOST_USERNAME: ${{ secrets.MM_BOT_NAME }}
+          TEXT: |
+            ## ${{ steps.changelog.outputs.latestVersion }}
 
-      - name: Publish Packages to NPM
-        run: pnpm run release:publish --no-git-checks
+            ${{ steps.changelog.outputs.latestBody }}
